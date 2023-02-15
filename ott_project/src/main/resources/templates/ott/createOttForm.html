@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <form action="/members/new" method="post">
+    <div class="form-group">
+      OTT 개설 신청
+      <br>
+      <br>
+      <label>OTT 종류 &nbsp </label>
+      <input type="text" name="ottvar" placeholder="OTT 종류">
+      <br>
+      <label>소유주 &nbsp &nbsp </label>
+      <input type="text" name="owner" placeholder="소유주(신청인)">
+      <br>
+      <label>최대인원 &nbsp </label>
+      <input type="text" name="maxnum" placeholder="최대인원">
+      <br>
+      <label>희망공유기간 &nbsp </label>
+      <input type="text" name="duration" placeholder="희망공유기간 (개월)">
+      <br>
+      <label>총금액 &nbsp </label>
+      <input type="text" name="totalcost" placeholder="총금액 (원)">
+    </div>
+    <button type="submit">등록</button>
+  </form>
+</div> <!-- /container -->
+</body>
+</html>
