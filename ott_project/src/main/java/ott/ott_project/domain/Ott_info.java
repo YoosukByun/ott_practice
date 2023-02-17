@@ -1,8 +1,6 @@
 package ott.ott_project.domain;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import lombok.*;
-
 import javax.persistence.*;
 
 //OTT 기준정보(OTT_INFO) DB 테이블

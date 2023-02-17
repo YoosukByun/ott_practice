@@ -18,8 +18,8 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //DB에 생성 위임
     private int mem_id_key;
 
-    @Column(name="id", nullable = false, length = 30)
-    private String id;
+    @Column(name="userid", nullable = false, length = 30)
+    private String userid;
 
     @Column(name="pw", nullable = false, length = 30)
     private String pw;
@@ -28,7 +28,7 @@ public class Member {
     private String name;
 
     @Column(name="phone_num", nullable = false)
-    private int phone_num;
+    private int phoneNum;
 
     @Column(name="account", nullable = false, length = 50)
     private String account;

@@ -23,18 +23,17 @@ dependencies {
 	testImplementation 'junit:junit:4.13.1'
 	testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 	runtimeOnly 'com.h2database:h2'
-	/*testImplementation('org.springframework.boot:spring-boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}*/
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
 	compileOnly 'org.projectlombok:lombok:1.18.22'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 	testCompileOnly 'org.projectlombok:lombok:1.18.22'
+
 	testImplementation("org.junit.vintage:junit-vintage-engine") {
 				exclude group: "org.hamcrest", module: "hamcrest-core"
 	}
 	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 }
 

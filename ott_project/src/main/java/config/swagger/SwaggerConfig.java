@@ -28,7 +28,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("hobbybee Spring Boot REST API")
                 .version("1.0.0")
-                .description("취미 생활 커뮤니티 hobbybee의 swagger api 입니다.")
+                .description("취미 생활 커뮤니티 hobbybee의 swagger api")
                 .build();
     }
 }

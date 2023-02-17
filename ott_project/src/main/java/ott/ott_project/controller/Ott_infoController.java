@@ -1,14 +1,14 @@
 package ott.ott_project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import ott.ott_project.service.Ott_infoService;
 
-@RestController
+@Controller
 public class Ott_infoController {
     private final Ott_infoService ott_InfoService;
 

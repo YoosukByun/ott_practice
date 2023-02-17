@@ -39,7 +39,7 @@ public class MemberService {
     }
 
     //로그인 프로세스
-    public boolean loginProcess(String Id, String Pw){
+    /*public boolean loginProcess(String Id, String Pw){
         Member member = new Member();
         if(memberRepository.findByName(Id) != null){
             if(memberRepository.findByPw(Pw) != null){
@@ -49,19 +49,19 @@ public class MemberService {
             return false;
         }
         return false;
-    }
+    }*/
 
     //회원 가입
     public String memberRegister(String userId, String userPw, String Name, int phoneNum, String Account)
     {
         Member member = new Member();
-        member.setId(userId);
+        member.setUserid(userId);
         member.setName(Name);
         member.setPw(userPw);
-        member.setPhone_num(phoneNum);
+        member.setPhoneNum(phoneNum);
         member.setAccount(Account);
         memberRepository.save(member);
-        return member.getId();
+        return member.getUserid();
     }
     //전체 멤버 조회
     public List<Member> findMembers() {return memberRepository.findAll();}

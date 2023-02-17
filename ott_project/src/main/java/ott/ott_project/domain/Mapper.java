@@ -1,6 +1,5 @@
 package ott.ott_project.domain;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import lombok.*;
 
 import javax.persistence.*;

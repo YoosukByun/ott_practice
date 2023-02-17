@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ott.ott_project.domain.Member;
 import ott.ott_project.service.MemberService;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @GetMapping("/login") //로그인
+    /*@GetMapping("/login") //로그인
     public String Login(@RequestParam("userid") String userId, @RequestParam("userpw") String userPw, Model model)
     {
         model.addAttribute("userid", userId);
@@ -32,7 +31,7 @@ public class MemberController {
        else {
             return "members/Login";
         }
-    }
+    }*/
     @GetMapping("/members/new")
     public String createForm() {
         return "members/createMemberForm";
