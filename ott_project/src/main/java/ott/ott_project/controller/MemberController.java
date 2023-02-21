@@ -19,22 +19,9 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    /*@GetMapping("/login") //로그인
-    public String Login(@RequestParam("userid") String userId, @RequestParam("userpw") String userPw, Model model)
-    {
-        model.addAttribute("userid", userId);
-        model.addAttribute("userpw", userPw);
-        boolean login_result=memberService.loginProcess(userId, userPw);
-        if(login_result) {
-           return "ott/ottView";
-        }
-       else {
-            return "members/Login";
-        }
-    }*/
     @GetMapping("/members/new")
     public String createForm() {
-        return "members/createMemberForm";
+        return "members/CreateMemberForm";
     }
 
     @PostMapping("/members/new") //회원가입
@@ -53,15 +40,4 @@ public class MemberController {
         memberService.memberRegister(userId, userPw, Name, phoneNum, Account);
         return "redirect:/";
     }
-
-    /*@GetMapping("/memberlist") //전체 멤버 조회
-    public String List(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members",members);
-        return "member/memberList";
-    }*/
-    /*@GetMapping("/members") //전체 멤버 조회
-    public List<Member> getMembers() {
-        return memberService.findMembers();
-    }*/
 }

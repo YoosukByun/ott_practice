@@ -16,7 +16,7 @@ public class Member {
     @Id
     @Column(name="member_id_key", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY) //DB에 생성 위임
-    private int mem_id_key;
+    private int memIdKey;
 
     @Column(name="userid", nullable = false, length = 30)
     private String userid;

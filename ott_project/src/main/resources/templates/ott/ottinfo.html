@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>OTT 신청 페이지</title>
+  <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>OTT 신청 페이지</h1>
+<a href="/ott/new">OTT 개설은 이쪽으로</a><br>
+<hr>
+<div class="container">
+  <table width="100%" border="1">
+    <thead>
+    <tr>
+      <th>OTT명</th>
+      <th>소유주</th>
+      <th>최대인원</th>
+      <th>현재인원</th>
+      <th>희망공유기간</th>
+      <th>총금액</th>
+      <th>삭제</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ottinfo : ${ottinfos}">
+      <td th:text="${ottinfo.ottVar}"></td>
+      <td th:text="${ottinfo.owner}"></td>
+      <td th:text="${ottinfo.maxNum}"></td>
+      <td th:text="${ottinfo.nowNum}"></td>
+      <td th:text="${ottinfo.duration}"></td>
+      <td th:text="${ottinfo.totalCost}"></td>
+      <!--<td><a href="/" th:href="@{'delete/'+${ottinfo.ottIdKey}}">삭제</a></td>-->
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+</body>
+</html>

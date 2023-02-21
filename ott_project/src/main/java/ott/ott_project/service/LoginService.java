@@ -4,9 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ott.ott_project.domain.Member;
 import ott.ott_project.repository.MemberRepository;
-import java.util.*;
-
-
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +12,7 @@ public class LoginService {
     public Member login(String loginId, String password) {
         Member member = new Member();
         member = memberRepository.findByUserid(loginId);
+        System.out.println(member.getUserid());
         if(loginId.equals(member.getUserid())) {
             if(password.equals(member.getPw()))
             {

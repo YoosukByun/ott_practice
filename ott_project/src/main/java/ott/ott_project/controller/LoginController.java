@@ -50,10 +50,12 @@ public class LoginController {
         //서블릿 HTTP 세션 사용
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
+        Member user = (Member) session.getAttribute("loginMember");
+        System.out.println(user.getUserid());
 
         return "redirect:/";
     }
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String logout(HttpServletResponse response, HttpServletRequest request){
         HttpSession session = request.getSession(false);
         if(session != null){
