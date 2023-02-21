@@ -9,14 +9,8 @@ import java.util.Optional;
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Integer> {
 
-
-    //Member findByName(String id);
     Member findByUserid(String useid);
     Optional<Member> findByName(String name);
-
     Member findByPw(String pw);
-    //Optional<Member> findByName(@Param("name") String name);
-    //@Query(value = "SELECT ID FROM Member WHERE name = ?0", nativeQuery = true)
-
 
 }

@@ -24,6 +24,7 @@
     </tr>
     </thead>
     <tbody>
+    <!--+${ottinfo.ottIdKey}-->
     <tr th:each="ottinfo : ${ottinfos}">
       <td th:text="${ottinfo.ottVar}"></td>
       <td th:text="${ottinfo.owner}"></td>
@@ -31,10 +32,9 @@
       <td th:text="${ottinfo.nowNum}"></td>
       <td th:text="${ottinfo.duration}"></td>
       <td th:text="${ottinfo.totalCost}"></td>
-      <!--<td><a href="/" th:href="@{'delete/'+${ottinfo.ottIdKey}}">삭제</a></td>-->
+      <td><a href="/" th:href="@{'/ott/ottinfo/del/'+${ottinfo.ottIdKey}}">삭제</a></td>-->
     </tr>
     </tbody>
-
   </table>
 </div>
 </body>

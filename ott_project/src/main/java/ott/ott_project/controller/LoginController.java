@@ -3,10 +3,12 @@ package ott.ott_project.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import ott.ott_project.domain.Member;
 import ott.ott_project.service.LoginService;
 
@@ -26,6 +28,7 @@ public class LoginController {
         public static final String LOGIN_MEMBER = "loginMember";
 
     }
+    public String loginTmp;
     private final LoginService loginService;
 
     @GetMapping("/login")
@@ -51,13 +54,16 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
         Member user = (Member) session.getAttribute("loginMember");
-        System.out.println(user.getUserid());
+        loginService.loginMember(user.getUserid());
+        loginTmp=user.getUserid();
 
         return "redirect:/";
     }
     @GetMapping("/logout")
     public String logout(HttpServletResponse response, HttpServletRequest request){
         HttpSession session = request.getSession(false);
+        System.out.println(loginTmp+"logout");
+        loginService.logoutMember(loginTmp);
         if(session != null){
             session.invalidate(); //세션을 제거한다.
         }
