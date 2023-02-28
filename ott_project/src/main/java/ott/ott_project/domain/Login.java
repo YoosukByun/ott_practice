@@ -14,7 +14,7 @@ public class Login {
     @Id
     @Column(name="login_key", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY) //DB에 생성 위임
-    private int loginMember;
+    private int loginKey;
     @Column(name="login_member", nullable = false, length = 30)
     private String userid;
 }

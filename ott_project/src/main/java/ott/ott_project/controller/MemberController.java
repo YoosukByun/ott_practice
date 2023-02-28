@@ -6,6 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ott.ott_project.domain.Login;
+import ott.ott_project.domain.Member;
+import ott.ott_project.domain.Ottinfo;
+import ott.ott_project.repository.LoginRepository;
+import ott.ott_project.repository.MemberRepository;
+import ott.ott_project.repository.OttinfoRepository;
+import ott.ott_project.service.MapperService;
 import ott.ott_project.service.MemberService;
 
 import java.util.List;
@@ -13,10 +20,22 @@ import java.util.List;
 //@RestController
 public class MemberController {
     private final MemberService memberService;
+    private final LoginRepository loginRepository;
+    private final MemberRepository memberRepository;
+    private final MapperService mapperService;
+    private final OttinfoRepository ottinfoRepository;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService,
+                            LoginRepository loginRepository,
+                            MemberRepository memberRepository,
+                            MapperService mapperService,
+                            OttinfoRepository ottinfoRepository) {
         this.memberService = memberService;
+        this.loginRepository = loginRepository;
+        this.memberRepository = memberRepository;
+        this.mapperService = mapperService;
+        this.ottinfoRepository = ottinfoRepository;
     }
 
     @GetMapping("/members/new")
@@ -39,5 +58,18 @@ public class MemberController {
         model.addAttribute("account", Account);
         memberService.memberRegister(userId, userPw, Name, phoneNum, Account);
         return "redirect:/";
+    }
+
+    @GetMapping("/members/myinfo")
+    public String MyInfo(Model model) {
+        List<Login> logins = loginRepository.findAll();
+        Login login = logins.get(0);
+        //쿠키값 받으면 쿠키값 받아서 고치는걸로 고쳐야함.
+        //화면 만들라고 만들어놓은거임
+        Member member = memberRepository.findByUserid(login.getUserid());
+        model.addAttribute("member", member);
+        List<Ottinfo> ottInfos =mapperService.showOttinfoByMember(member.getMemIdKey());
+        model.addAttribute("ottinfos", ottInfos);
+        return "members/myinfo";
     }
 }

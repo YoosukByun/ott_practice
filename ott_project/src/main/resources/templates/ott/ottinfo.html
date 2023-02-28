@@ -9,6 +9,7 @@
 <body>
 <h1>OTT 신청 페이지</h1>
 <a href="/ott/new">OTT 개설은 이쪽으로</a><br>
+<a href="/">홈 화면</a><br>
 <hr>
 <div class="container">
   <table width="100%" border="1">
@@ -21,6 +22,7 @@
       <th>희망공유기간</th>
       <th>총금액</th>
       <th>삭제</th>
+      <th>신청</th>
     </tr>
     </thead>
     <tbody>
@@ -32,10 +34,35 @@
       <td th:text="${ottinfo.nowNum}"></td>
       <td th:text="${ottinfo.duration}"></td>
       <td th:text="${ottinfo.totalCost}"></td>
-      <td><a href="/" th:href="@{'/ott/ottinfo/del/'+${ottinfo.ottIdKey}}">삭제</a></td>-->
+      <td><a href="/" th:data-ott-id-key="${ottinfo.ottIdKey}" class="del-link">삭제</a></td>
+      <td><a href="/" th:data-add-id-key="${ottinfo.ottIdKey}" class="add-link">신청</a></td>
+      <!--<td><a href="/" th:href="@{'/ott/ottinfo/'+${#strings.toString(ottinfo.ottIdKey)}}">삭제</a></td>-->
     </tr>
     </tbody>
   </table>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.del-link').click(function(event) {
+      event.preventDefault();
+      console.log(event);
+      var ottIdKey = $(this).data('ott-id-key');
+      var form = $('<form action="/ott/ottinfo/' + ottIdKey + '" method="get"></form>');
+      $('body').append(form);
+      form.submit();
+    });
+  });
+  $(document).ready(function() {
+    $('.add-link').click(function(event) {
+      event.preventDefault();
+      console.log(event);
+      var ottIdKey = $(this).data('add-id-key');
+      var form = $('<form action="/ott/ottinfo/add/' + ottIdKey + '" method="get"></form>');
+      $('body').append(form);
+      form.submit();
+    });
+  });
+</script>
 </body>
 </html>

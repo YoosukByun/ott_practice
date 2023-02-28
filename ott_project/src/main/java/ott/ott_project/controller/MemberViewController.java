@@ -16,7 +16,7 @@ public class MemberViewController {
     public MemberViewController(MemberService memberService) {
         this.memberService = memberService;
     }
-    @GetMapping("/members") //전체 멤버 조회
+    @GetMapping("/members_viewapi") //전체 멤버 조회
     public List<Member> getMembers() {
         return memberService.findMembers();
     }

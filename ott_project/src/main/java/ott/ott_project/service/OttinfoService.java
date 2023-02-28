@@ -29,7 +29,7 @@ public class OttinfoService {
     //아직 미구현이며, 로그인 기능 구현 후, owner는 Member 테이블의 '본인 회원정보.회원명'으로 교체 예정
     public String createOttShare(String ottVar, String owner, int maxNum, int nowNum, int duration, int totalCost) {
         Member member = memberRepository.findByName(owner).orElseThrow();
-        if(member.getName()==null)
+        if(member==null)
         {
             return null;
         }
