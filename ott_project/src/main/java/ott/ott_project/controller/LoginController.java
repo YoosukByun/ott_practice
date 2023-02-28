@@ -25,7 +25,7 @@ public class LoginController {
         public static final String LOGIN_MEMBER = "loginMember";
 
     }
-    public String loginTmp;
+
     private final LoginService loginService;
 
     @GetMapping("/login")
@@ -51,16 +51,11 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
         Member user = (Member) session.getAttribute("loginMember");
-        loginService.loginMember(user.getUserid());
-        loginTmp=user.getUserid();
-
         return "redirect:/";
     }
     @GetMapping("/logout")
     public String logout(HttpServletResponse response, HttpServletRequest request){
         HttpSession session = request.getSession(false);
-        System.out.println(loginTmp+"logout");
-        loginService.logoutMember(loginTmp);
         if(session != null){
             session.invalidate(); //세션을 제거한다.
         }

@@ -22,7 +22,11 @@ public class HomeController {
         Member loginmember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
 
         if (loginmember == null) {
-            return "loginhome";
+            // 다시 로그인 처리가 가능하게끔 하거나
+            // 로그인이 안된 상태라는 노티를 보여주는 페이지 이동 처리
+//            return "loginhome";
+        } else {
+            // 정상 로그인 됐을 때 이동하는 페이지로 return
         }
         model.addAttribute("member",loginmember);
         return "loginhome";

@@ -1,5 +1,6 @@
 package ott.ott_project.controller;
 
+import org.hibernate.action.internal.EntityAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,8 @@ import ott.ott_project.repository.MemberRepository;
 import ott.ott_project.repository.OttinfoRepository;
 import ott.ott_project.service.MapperService;
 import ott.ott_project.service.MemberService;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 @Controller
 //@RestController
@@ -61,14 +63,16 @@ public class MemberController {
     }
 
     @GetMapping("/members/myinfo")
-    public String MyInfo(Model model) {
-        List<Login> logins = loginRepository.findAll();
-        Login login = logins.get(0);
+    public String MyInfo(Model model, HttpServletRequest request) {
+//      List<Login> logins = loginRepository.findAll();
+//      Login login = logins.get(0);
+        HttpSession session = request.getSession(false);
+        Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
         //쿠키값 받으면 쿠키값 받아서 고치는걸로 고쳐야함.
         //화면 만들라고 만들어놓은거임
-        Member member = memberRepository.findByUserid(login.getUserid());
-        model.addAttribute("member", member);
-        List<Ottinfo> ottInfos =mapperService.showOttinfoByMember(member.getMemIdKey());
+        //Member member = memberRepository.findByUserid(login.getUserid());
+        model.addAttribute("member", loginMember);
+        List<Ottinfo> ottInfos =mapperService.showOttinfoByMember(loginMember.getMemIdKey());
         model.addAttribute("ottinfos", ottInfos);
         return "members/myinfo";
     }
