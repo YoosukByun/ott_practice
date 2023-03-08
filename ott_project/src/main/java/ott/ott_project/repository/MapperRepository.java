@@ -17,5 +17,5 @@ public interface MapperRepository extends JpaRepository<Mapper, Integer> {
     <Optional>Mapper findByMemberAndOttInfo(int member, int ottInfo);
     List<Mapper> findByOttInfo(int ottInfo);
     List<Mapper> findAllByMember(int member);
-    <Optional>Mapper findByMember(int member);
+    <Optional>Mapper deleteByMember(int member);
 }

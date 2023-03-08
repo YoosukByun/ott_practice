@@ -63,12 +63,28 @@ public class MemberController {
     public String MyInfo(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
-        //쿠키값 받으면 쿠키값 받아서 고치는걸로 고쳐야함.
-        //화면 만들라고 만들어놓은거임
-        //Member member = memberRepository.findByUserid(login.getUserid());
         model.addAttribute("member", loginMember);
         List<Ottinfo> ottInfos =mapperService.showOttinfoByMember(loginMember.getMemIdKey());
         model.addAttribute("ottinfos", ottInfos);
         return "members/myinfo";
+    }
+
+    @GetMapping("/members/quit") //화면 없고 API만 존재 -> 탈퇴 후, 바로 로그인 페이지로 이동
+    public String MemberQuit(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
+        //Mapper에서 정리 필요
+        //Ottinfo에서 정리 필요
+        mapperService.OttCancel(loginMember.getMemIdKey(),-1); //데이터 삭제
+        memberService.memberQuit(loginMember.getMemIdKey());
+
+        if(session != null){
+            session.invalidate(); //로그아웃 후, 로그인 페이지로 리다이렉트
+        }
+        return "/";
+    }
+    @GetMapping("members/quitcheck")
+    public String MemberQuitCheck() {
+        return "/members/quitcheck";
     }
 }

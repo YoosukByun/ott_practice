@@ -19,7 +19,7 @@
       <th>소유주</th>
       <th>최대인원</th>
       <th>현재인원</th>
-      <th>희망공유기간</th>
+      <th>희망공유기간 (개월)</th>
       <th>총금액</th>
       <th>삭제</th>
       <th>신청</th>
@@ -32,7 +32,7 @@
       <td th:text="${ottinfo.owner}"></td>
       <td th:text="${ottinfo.maxNum}"></td>
       <td th:text="${ottinfo.nowNum}"></td>
-      <td th:text="${ottinfo.duration} 개월"></td>
+      <td th:text="${ottinfo.duration} + 개월"></td>
       <td th:text="${ottinfo.totalCost}"></td>
       <td><a href="/" th:data-ott-id-key="${ottinfo.ottIdKey}" class="del-link">삭제</a></td>
       <td><a href="/" th:data-add-id-key="${ottinfo.ottIdKey}" class="add-link">신청</a></td>

@@ -3,14 +3,15 @@ package ott.ott_project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ott.ott_project.domain.Member;
+import ott.ott_project.repository.MapperRepository;
 import ott.ott_project.repository.MemberRepository;
 import java.util.List;
 
 @Service
 public class MemberService {
-    //회원가입
     @Autowired
     public MemberRepository memberRepository;
+    public MapperRepository mapperRepository;
 
     //회원 가입
     public String memberRegister(String userId, String userPw, String Name, int phoneNum, String Account)
@@ -27,5 +28,12 @@ public class MemberService {
     //전체 멤버 조회
     public List<Member> findMembers() {return memberRepository.findAll();}
 
-    //로그아웃 프로세스 (컨트롤러에서 구현)
+    //회원 탈퇴
+    public int memberQuit(int memIdKey)
+    {
+        System.out.println("현재 로그인한 회원 데이터 삭제");
+        memberRepository.deleteById(memIdKey);
+
+        return 0;
+    }
 }
