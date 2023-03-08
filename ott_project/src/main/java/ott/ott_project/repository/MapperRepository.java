@@ -1,10 +1,8 @@
 package ott.ott_project.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import ott.ott_project.domain.Mapper;
 import ott.ott_project.domain.Ottinfo;
-
 import java.util.List;
 import java.util.Map;
 

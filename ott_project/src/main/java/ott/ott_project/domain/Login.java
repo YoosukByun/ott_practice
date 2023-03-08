@@ -1,8 +1,8 @@
 package ott.ott_project.domain;
 
 import lombok.*;
-
 import javax.persistence.*;
+
 @Entity
 @Table(name="login")
 @Getter

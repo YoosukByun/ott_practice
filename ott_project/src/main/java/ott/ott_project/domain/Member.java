@@ -12,6 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
+
 public class Member {
     @Id
     @Column(name="member_id_key", nullable = false)

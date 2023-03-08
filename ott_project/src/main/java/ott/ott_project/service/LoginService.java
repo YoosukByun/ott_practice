@@ -2,7 +2,6 @@ package ott.ott_project.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ott.ott_project.domain.Login;
 import ott.ott_project.domain.Member;
 import ott.ott_project.repository.LoginRepository;
 import ott.ott_project.repository.MemberRepository;

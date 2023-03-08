@@ -8,8 +8,6 @@ import ott.ott_project.repository.MapperRepository;
 import ott.ott_project.repository.MemberRepository;
 import ott.ott_project.repository.OttinfoRepository;
 
-import java.util.List;
-
 @Service
 public class OttinfoService {
 

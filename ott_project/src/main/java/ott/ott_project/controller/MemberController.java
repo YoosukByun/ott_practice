@@ -16,6 +16,7 @@ import ott.ott_project.service.MemberService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
 @Controller
 public class MemberController {
     private final MemberService memberService;

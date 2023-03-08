@@ -57,38 +57,41 @@ public class MapperService {
 
         if(ottIdKey==-1) // [회원탈퇴 시 작업/검증필요]
         {
+            member = memberRepository.findById(memberIdKey).orElseThrow();
+            List<Ottinfo> ottinfos1 = ottInfoRepository.findAllByOwner(member.getName());
+
+            if(ottinfos1!=null)
             if(memberIdKey==member.getMemIdKey()) // 현재 OTT 취소하려는 멤버와 개설자가 같으면
             {
                 //개설자가 모집 삭제 시 해당 모집 신청자들의 신청도 같이 전부 취소
                 System.out.println("ottkey "+ ottIdKey);
                 List<Mapper> mappers = mapperRepository.findAllByMember(memberIdKey);
-                List<Ottinfo> ottinfos = ottInfoRepository.findAllByOwner(member.getName());
+                List<Ottinfo> ottinfosTmp = ottInfoRepository.findAllByOwner(member.getName());
                 for (Mapper mapper1 : mappers) {
                     System.out.println("Mapper ID: " + mapper1.getMapNum());
                     // Do something with the individual Mapper object
                 }
-                ottInfoRepository.deleteAll(ottinfos);
+                ottInfoRepository.deleteAll(ottinfosTmp);
                 mapperRepository.deleteAll(mappers);
                 return 0;
             }
             List<Mapper> mappers = mapperRepository.findAllByMember(memberIdKey);
-            List<Ottinfo> ottinfos = new ArrayList<>();
+            List<Ottinfo> ottinfos2 = new ArrayList<>();
 
             for(Mapper mapperTmp:mappers) {
                 Ottinfo ottinfoTmp = ottInfoRepository.findById(mapperTmp.getOttInfo()).orElseThrow();
-                ottinfos.add(ottinfoTmp);
+                ottinfos2.add(ottinfoTmp);
             }
-            for(Ottinfo ottinfoTmp: ottinfos)
+            for(Ottinfo ottinfoTmp: ottinfos2)
             {
                 ottinfoTmp.setNowNum(ottinfoTmp.getNowNum()-1);
             }
             mapperRepository.deleteAll(mappers);
-            ottInfoRepository.saveAll(ottinfos);
+            ottInfoRepository.saveAll(ottinfos2);
             return 0;
         }
 
         if(memberIdKey==member.getMemIdKey()) // 현재 OTT 취소하려는 멤버와 개설자가 같으면
-        //if(loginRepository.findByUserid(member.getUserid())!=null)
         {
             //개설자가 모집 삭제 시 해당 모집 신청자들의 신청도 같이 전부 취소
             System.out.println("ottkey "+ ottIdKey);
