@@ -17,6 +17,13 @@ public class MemberService {
     public String memberRegister(String userId, String userPw, String Name, int phoneNum, String Account)
     {
         Member member = new Member();
+        List<Member> members = memberRepository.findAllByUserid(userId);
+        if(!members.isEmpty())
+        {
+            System.out.println("이미 가입된 아이디 입니다");
+            return null;
+        }
+
         member.setUserid(userId);
         member.setName(Name);
         member.setPw(userPw);

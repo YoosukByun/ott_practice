@@ -27,8 +27,18 @@ public class MapperService {
     {
         Mapper mapper = new Mapper();
         Ottinfo ottinfo = new Ottinfo();
-        ottinfo = ottInfoRepository.findById(ottIdKey).orElseThrow();
-        System.out.println("ottApply "+memberIdKey+" "+ottIdKey);
+        try {
+            ottinfo = ottInfoRepository.findById(ottIdKey).orElseThrow();
+            System.out.println("ottApply " + memberIdKey + " " + ottIdKey);
+        } catch (Exception e){
+            System.out.println("No ottinfo found with ottIdKey");
+            return -1;
+        }
+        //중복된 사용자가 들어올 경우, 예외처리 필요
+        if(mapperRepository.findByMemberAndOttInfo(memberIdKey,ottIdKey)!=null)
+        {
+            return -1;
+        }
         if(ottinfo.getNowNum()== ottinfo.getMaxNum()) {
             //인원 다참
             return -1;
@@ -49,19 +59,43 @@ public class MapperService {
         Member member = new Member();
         Ottinfo ottinfo = new Ottinfo();
         if(ottIdKey!=-1) {
-            ottinfo = ottInfoRepository.findById(ottIdKey).orElseThrow();
-            System.out.println("ottidkey " + ottinfo.getOttIdKey());
-            System.out.println(ottinfo.getOwner());
-            member = memberRepository.findByName(ottinfo.getOwner()).orElseThrow();
+            try {
+                    ottinfo = ottInfoRepository.findById(ottIdKey).orElseThrow();
+                    System.out.println("ottidkey " + ottinfo.getOttIdKey());
+                    System.out.println(ottinfo.getOwner());
+            }
+            catch(Exception e) {
+                System.out.println("No ottinfo found with ottIdKey");
+                return -1;
+            }
+            try {
+                member = memberRepository.findByName(ottinfo.getOwner()).orElseThrow();
+            }
+            catch(Exception e) {
+                System.err.println("No member found with name " + ottinfo.getOwner());
+                return -1;
+            }
+            try {
+                Mapper mapperTmp = mapperRepository.findByMemberAndOttInfo(memberIdKey, ottIdKey);
+            }
+            catch (Exception e) {
+                return -1;
+            }
         }
 
         if(ottIdKey==-1) // [회원탈퇴 시 작업/검증필요]
         {
-            member = memberRepository.findById(memberIdKey).orElseThrow();
+            try {
+                member = memberRepository.findById(memberIdKey).orElseThrow();
+            }
+            catch (Exception e) {
+                System.err.println("No member found with memberIdKey");
+                return -1;
+            }
             List<Ottinfo> ottinfos1 = ottInfoRepository.findAllByOwner(member.getName());
 
-            if(ottinfos1!=null)
-            if(memberIdKey==member.getMemIdKey()) // 현재 OTT 취소하려는 멤버와 개설자가 같으면
+            if(!ottinfos1.isEmpty())
+            //if(memberIdKey==member.getMemIdKey()) // 현재 OTT 취소하려는 멤버와 개설자가 같으면
             {
                 //개설자가 모집 삭제 시 해당 모집 신청자들의 신청도 같이 전부 취소
                 System.out.println("ottkey "+ ottIdKey);
@@ -121,7 +155,10 @@ public class MapperService {
             //Mapper 테이블 해당 row 삭제
             return 0;
         }
-        ottinfo.setNowNum(ottinfo.getNowNum()-1);
+        if(mapperRepository.findByMemberAndOttInfo(memberIdKey, ottIdKey)!=null)
+        {
+            ottinfo.setNowNum(ottinfo.getNowNum()-1);
+        }
         ottInfoRepository.save(ottinfo);
         //Mapper 테이블 해당 row 삭제
         Mapper mapperTmp = mapperRepository.findByMemberAndOttInfo(memberIdKey,ottIdKey);

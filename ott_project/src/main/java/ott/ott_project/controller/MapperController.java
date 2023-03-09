@@ -41,8 +41,13 @@ public class MapperController {
         HttpSession session = request.getSession(false);
         Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
         Integer ottIdKeyTmp = Integer.parseInt(ottIdKey);
-        mapperService.OttCancel(loginMember.getMemIdKey(), ottIdKeyTmp);
-        return "redirect:/ott/ottinfo";
+        if(mapperService.OttCancel(loginMember.getMemIdKey(), ottIdKeyTmp)!=-1) {
+            return "redirect:/ott/ottinfo";
+        }
+        else {
+            return "error";
+        }
+
     }
 
     //OTT 신청 추가
@@ -52,8 +57,12 @@ public class MapperController {
         HttpSession session = request.getSession(false);
         Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
         Integer ottIdKeyTmp = Integer.parseInt(ottIdKey);
-        mapperService.OttApply(loginMember.getMemIdKey(),ottIdKeyTmp);
-        return "redirect:/ott/ottinfo";
+        if(mapperService.OttApply(loginMember.getMemIdKey(),ottIdKeyTmp)!=-1) {
+            return "redirect:/ott/ottinfo";
+        }
+        else {
+            return "error";
+        }
     }
 
 }

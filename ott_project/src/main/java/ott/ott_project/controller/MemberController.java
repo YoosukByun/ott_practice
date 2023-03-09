@@ -76,7 +76,7 @@ public class MemberController {
         Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
         //Mapper에서 정리 필요
         //Ottinfo에서 정리 필요
-        mapperService.OttCancel(loginMember.getMemIdKey(),-1); //데이터 삭제
+        mapperService.OttCancel(loginMember.getMemIdKey(),-1);//데이터 삭제
         memberService.memberQuit(loginMember.getMemIdKey());
 
         if(session != null){

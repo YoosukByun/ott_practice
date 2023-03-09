@@ -22,9 +22,6 @@ public class OttinfoService {
     @Autowired
     private MemberRepository memberRepository;
 
-    //OTT 개설
-    //멤버 이름은 로그인 후, 본인 회원정보에 해당하는 멤버키를 받아야함
-    //아직 미구현이며, 로그인 기능 구현 후, owner는 Member 테이블의 '본인 회원정보.회원명'으로 교체 예정
     public String createOttShare(String ottVar, String owner, int maxNum, int nowNum, int duration, int totalCost) {
         Member member = memberRepository.findByName(owner).orElseThrow();
         if(member==null)
