@@ -20,8 +20,13 @@ public class MemberService {
         List<Member> members = memberRepository.findAllByUserid(userId);
         if(!members.isEmpty())
         {
-            System.out.println("이미 가입된 아이디 입니다");
-            return null;
+            System.out.println("already joinded member");
+            return "e";
+        }
+        if(userPw.length()<4)
+        {
+            System.out.println("too short password");
+            return "e";
         }
 
         member.setUserid(userId);

@@ -56,7 +56,10 @@ public class MemberController {
         model.addAttribute("userpw", userPw);
         model.addAttribute("phonenum", phoneNum);
         model.addAttribute("account", Account);
-        memberService.memberRegister(userId, userPw, Name, phoneNum, Account);
+        if (memberService.memberRegister(userId, userPw, Name, phoneNum, Account).equals("e")) {
+            return "error";
+        }
+        //memberService.memberRegister(userId, userPw, Name, phoneNum, Account);
         return "redirect:/";
     }
 

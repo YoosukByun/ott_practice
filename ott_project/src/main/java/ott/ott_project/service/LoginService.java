@@ -13,18 +13,21 @@ public class LoginService {
 
     public Member login(String loginId, String password) {
         Member member = new Member();
-        member = memberRepository.findByUserid(loginId);
+        try {
+            member = memberRepository.findByUserid(loginId).orElseThrow();
+        } catch (Exception e) {
+            return null;
+        }
         System.out.println(loginId);
-        System.out.println(member.getUserid());
-        if(loginId.equals(member.getUserid())) {
-            if(password.equals(member.getPw()))
-            {
+        if (loginId.equals(member.getUserid())) {
+            if (password.equals(member.getPw())) {
                 return member;
             } else {
                 return null;
             }
-        } else {
-            return null; // 여기는 로그인 실패에 대한 익셉션 처리가 필요함
+
+        }else {
+            return null;
         }
     }
 }
