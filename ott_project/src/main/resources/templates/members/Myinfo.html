@@ -5,6 +5,43 @@
   <meta charset="UTF-8">
   <title>내 정보</title>
   <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0 auto;
+      max-width: 1000px;
+      background-color: #3617CE;
+      color: white;
+    }
+    h1 {
+      color: white;
+    }
+    h3 {
+      color: #3617CE;
+    }
+    a {
+      font-size: 14px;
+      color: white;
+      background-color: #FF404E;
+      padding: 5px 8px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
+    a:hover {
+      background-color: #3617A2;
+    }
+    th, td {
+      background-color: white;
+      color: #3617CE;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+  </style>
 </head>
 <body>
 <h1>내 정보</h1>
@@ -42,7 +79,7 @@
       <th>최대 인원</th>
       <th>현재 인원</th>
       <th>공유 기간</th>
-      <th>내가 낼 비용</th>
+      <th>내가 낼 비용 (1/n)</th>
     </tr>
     </thead>
     <tbody>
@@ -52,11 +89,34 @@
       <td th:text="${ottinfo.owner}"></td>
       <td th:text="${ottinfo.maxNum}"></td>
       <td th:text="${ottinfo.nowNum}"></td>
-      <td th:text="${ottinfo.duration}"></td>
-      <td th:text="${ottinfo.totalCost}/${ottinfo.duration}"></td>
+      <td th:text="${ottinfo.duration} + 개월"></td>
+      <td th:text="${ottinfo.totalCost}/${ottinfo.duration} + 원"></td>
     </tr>
     </tbody>
   </table>
+</div>
+<div class="container">
+<table width="50%" border="1" th:if="${not #lists.isEmpty(members)}"
+         style="${#lists.isEmpty(members) ? 'display:none' : ''}">
+    <thead>
+    <h3>입금 계좌</h3>
+    <tr>
+      <th>OTT 개설인</th>
+      <th>전화 번호</th>
+      <th>계좌 번호</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--+${ottinfo.ottIdKey}-->
+    <tr th:each="memberTmp : ${members}">
+      <td th:text="${memberTmp.name}"></td>
+      <td th:text="${memberTmp.phoneNum}"></td>
+      <td th:text="${memberTmp.account}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <a> 개설자 연락처 정보는 신청 후에 조회 가능합니다. </a>
 </div>
 </body>
 </html>

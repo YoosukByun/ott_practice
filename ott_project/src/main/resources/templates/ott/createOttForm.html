@@ -1,30 +1,93 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div class="container">
-  <form action="/ott/new" method="post">
-    <div class="form-group">
-      OTT 개설 신청
-      <br>
-      <a href="/">홈 화면</a><br>
-      <br>
-      <label>OTT 종류 &nbsp </label>
-      <input type="text" name="ottvar" placeholder="OTT 종류">
-      <br>
-      <label>소유주 &nbsp &nbsp </label>
-      <input type="text" name="owner" placeholder="소유주(신청인)">
-      <br>
-      <label>최대인원 &nbsp </label>
-      <input type="text" name="maxnum" placeholder="최대인원">
-      <br>
-      <label>희망공유기간 &nbsp </label>
-      <input type="text" name="duration" placeholder="희망공유기간 (개월)">
-      <br>
-      <label>총금액 &nbsp </label>
-      <input type="text" name="totalcost" placeholder="총금액 (원)">
-    </div>
-    <button type="submit">등록</button>
-  </form>
-</div>
-</body>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+  <style>
+      body {
+        background-color: #3617CE;
+      }
+      .container {
+        margin: 0 auto;
+        max-width: 480px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #3617CE;
+        margin-bottom: 10px;
+      }
+      a {
+        font-size: 14px;
+        color: white;
+        background-color: #FF404E;
+        padding: 5px 8px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-right: 10px;
+        margin-bottom: 5px;
+      }
+      a:hover {
+        background-color: #3617A2;
+      }
+      label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #3617CE;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"], button[type="submit"] {
+        background-color: #EFEEEF;
+        color: #3617CE;
+        border: none;
+        padding: 8px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      button[type="submit"] {
+        font-size: 14px;
+        background-color: #FF404E;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #3617A2;
+      }
+  </style>
+</head>
+  <body>
+  <div class="container">
+    <form action="/ott/new" method="post">
+      <div class="form-group">
+        <h1>OTT 개설 신청</h1>
+        <a href="/">홈 화면 돌아가기</a><br>
+        <br>
+        <label>OTT 종류 &nbsp &nbsp &nbsp</label>
+        <input type="text" name="ottvar" placeholder="OTT 종류">
+        <br>
+        <label>소유주 &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+        <input type="text" name="owner" placeholder="소유주(신청인)">
+        <br>
+        <label>최대인원 &nbsp &nbsp &nbsp &nbsp</label>
+        <input type="text" name="maxnum" placeholder="최대인원">
+        <br>
+        <label>희망공유기간 &nbsp </label>
+        <input type="text" name="duration" placeholder="희망공유기간 (개월)">
+        <br>
+        <label>총금액 &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+        <input type="text" name="totalcost" placeholder="총금액 (원)">
+      </div>
+      <button type="submit">등록</button>
+    </form>
+  </div>
+  </body>
 </html>

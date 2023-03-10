@@ -1,29 +1,86 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
-<div class="container">
-  <form action="/members/new" method="post">
-    <div class="form-group">
-      회원 가입
-      <br>
-      <br>
-      <label>이름 &nbsp </label>
-      <input type="text" name="name" placeholder="이름을 입력하세요">
-      <br>
-      <label>ID &nbsp &nbsp </label>
-      <input type="text" name="userid" placeholder="ID를 입력하세요">
-      <br>
-      <label>비밀번호 &nbsp </label>
-      <input type="text" name="userpw" placeholder="비밀번호를 입력하세요">
-      <br>
-      <label>전화번호 &nbsp </label>
-      <input type="text" name="phonenum" placeholder="전화번호를 입력하세요">
-      <br>
-      <label>계좌번호 &nbsp </label>
-      <input type="text" name="account" placeholder="계좌번호를 입력하세요">
-    </div>
-    <button type="submit">등록</button>
-  </form>
-</div> <!-- /container -->
-</body>
+  <style>
+      body {
+        background-color: #3617CE;
+      }
+      .container {
+        margin: 0 auto;
+        max-width: 480px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #3617CE;
+        margin-bottom: 10px;
+      }
+      a {
+        font-size: 14px;
+        color: white;
+        background-color: #FF404E;
+        padding: 5px 8px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-right: 10px;
+        margin-bottom: 5px;
+      }
+      a:hover {
+        background-color: #3617A2;
+      }
+      label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #3617CE;
+        margin-bottom: 10px;
+      }
+      input[type="text"], button[type="submit"] {
+        background-color: #EFEEEF;
+        color: #3617CE;
+        border: none;
+        padding: 8px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      button[type="submit"] {
+        font-size: 14px;
+        background-color: #FF404E;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #3617A2;
+      }
+  </style>
+  <body>
+    <div class="container">
+      <form action="/members/new" method="post">
+        <div class="form-group">
+          <h1>회원 가입</h1>
+          <a href="/">홈 화면 돌아가기</a><br>
+          <br>
+          <label>이름 &nbsp &nbsp &nbsp &nbsp</label>
+          <input type="text" name="name" placeholder="이름을 입력하세요">
+          <br>
+          <label>ID &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+          <input type="text" name="userid" placeholder="ID를 입력하세요">
+          <br>
+          <label>비밀번호 &nbsp </label>
+          <input type="text" name="userpw" placeholder="비밀번호를 입력하세요">
+          <br>
+          <label>전화번호 &nbsp </label>
+          <input type="text" name="phonenum" placeholder="전화번호를 입력하세요">
+          <br>
+          <label>계좌번호 &nbsp </label>
+          <input type="text" name="account" placeholder="계좌번호를 입력하세요">
+        </div>
+        <button type="submit">등록</button>
+      </form>
+    </div> <!-- /container -->
+  </body>
 </html>

@@ -60,9 +60,7 @@ public class MapperService {
         Ottinfo ottinfo = new Ottinfo();
         if(ottIdKey!=-1) {
             try {
-                    ottinfo = ottInfoRepository.findById(ottIdKey).orElseThrow();
-                    System.out.println("ottidkey " + ottinfo.getOttIdKey());
-                    System.out.println(ottinfo.getOwner());
+                ottinfo = ottInfoRepository.findById(ottIdKey).orElseThrow();
             }
             catch(Exception e) {
                 System.out.println("No ottinfo found with ottIdKey");
@@ -82,7 +80,6 @@ public class MapperService {
                 return -1;
             }
         }
-
         if(ottIdKey==-1) // [회원탈퇴 시 작업/검증필요]
         {
             try {

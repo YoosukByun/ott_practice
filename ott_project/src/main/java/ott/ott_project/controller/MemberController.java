@@ -15,6 +15,7 @@ import ott.ott_project.service.MapperService;
 import ott.ott_project.service.MemberService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -68,8 +69,15 @@ public class MemberController {
         HttpSession session = request.getSession(false);
         Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
         model.addAttribute("member", loginMember);
-        List<Ottinfo> ottInfos =mapperService.showOttinfoByMember(loginMember.getMemIdKey());
+        List<Ottinfo> ottInfos = mapperService.showOttinfoByMember(loginMember.getMemIdKey());
         model.addAttribute("ottinfos", ottInfos);
+        List<Member> members = new ArrayList<>();
+        for(Ottinfo ottinfo : ottInfos)
+        {
+            Member memberTmp = memberRepository.findByName(ottinfo.getOwner()).orElseThrow();
+            members.add(memberTmp);
+        }
+        model.addAttribute("members", members);
         return "members/myinfo";
     }
 

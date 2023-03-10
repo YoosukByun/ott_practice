@@ -20,15 +20,19 @@ public class MemberService {
         List<Member> members = memberRepository.findAllByUserid(userId);
         if(!members.isEmpty())
         {
-            System.out.println("already joinded member");
+            System.out.println("Already joinded member");
             return "e";
         }
         if(userPw.length()<4)
         {
-            System.out.println("too short password");
+            System.out.println("Too short password");
             return "e";
         }
-
+        if(userId.isEmpty() || userPw.isEmpty() || Name.isEmpty() || phoneNum==0)
+        {
+            System.out.println("No mandatory information");
+            return "e";
+        }
         member.setUserid(userId);
         member.setName(Name);
         member.setPw(userPw);
