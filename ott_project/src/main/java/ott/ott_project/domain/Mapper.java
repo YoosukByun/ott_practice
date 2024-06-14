@@ -16,12 +16,10 @@ public class Mapper {
     @Column(name="map_num", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY) //DB에 생성 위임
     private int mapNum;
-    //@ManyToOne
-    //@JoinColumn(name="member_id_key")
+
     @Column(name="member_id_key", nullable = false)
     private int member;
-    //@ManyToOne
-    //@JoinColumn(name="ott_id_key")
+
     @Column(name="ott_id_key", nullable = false)
     private int ottInfo;
 }

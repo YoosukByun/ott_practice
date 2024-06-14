@@ -9,19 +9,19 @@
     body {
       margin: 0 auto;
       max-width: 1000px;
-      background-color: #3617CE;
+      background-color: #007a3e;
       color: white;
     }
     h1 {
       color: white;
     }
     h3 {
-      color: #3617CE;
+      color: #007a3e;
     }
     a {
       font-size: 14px;
       color: white;
-      background-color: #FF404E;
+      background-color: #8DC63F;
       padding: 5px 8px;
       border-radius: 5px;
       text-decoration: none;
@@ -29,11 +29,11 @@
       margin-bottom: 5px;
     }
     a:hover {
-      background-color: #3617A2;
+      background-color: #FF404E;
     }
     th, td {
       background-color: white;
-      color: #3617CE;
+      color: #007a3e;
     }
     .container {
       background-color: white;
@@ -48,6 +48,7 @@
 <a href="/">홈 화면</a><br>
 <hr>
 <div class="container">
+  <img class="ci-image" src="https://www.idbins.com/pcweb/bizxpress/cmy/__media/img_ci_10.png" alt="DB그룹 CI 이미지">
   <table width="100%" border="1">
     <thead>
     <h3>내 개인 정보</h3>
@@ -90,7 +91,7 @@
       <td th:text="${ottinfo.maxNum}"></td>
       <td th:text="${ottinfo.nowNum}"></td>
       <td th:text="${ottinfo.duration} + 개월"></td>
-      <td th:text="${ottinfo.totalCost}/${ottinfo.duration} + 원"></td>
+      <td th:text="${ottinfo.totalCost}/${ottinfo.duration}/${ottinfo.nowNum} + 원"></td>
     </tr>
     </tbody>
   </table>

@@ -1,116 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8">
-    <title>OTT 신청 페이지</title>
-    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet" />
-    <style>
-      body {
+<head>
+  <meta charset="UTF-8">
+  <title>OTT 신청 페이지</title>
+  <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet" />
+  <style>
+    body {
         margin: 0 auto;
         max-width: 1000px;
-        background-color: #3617CE;
+        background-color: #007a3e;
         color: white;
-      }
-      h1 {
+    }
+    h1 {
         color: white;
-      }
-      a {
-          font-size: 14px;
-          color: white;
-          background-color: #FF404E;
-          padding: 5px 8px;
-          border-radius: 5px;
-          text-decoration: none;
-          margin-right: 10px;
-          margin-bottom: 5px;
-      }
-      a:hover {
-          background-color: #3617A2;
-      }
-      th, td {
+    }
+    a {
+        font-size: 14px;
+        color: white;
+        background-color: #8DC63F;
+        padding: 5px 8px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-right: 10px;
+        margin-bottom: 5px;
+    }
+    a:hover {
+        background-color: #FF404E;
+    }
+    td, th {
         background-color: white;
-        color: #3617CE;
-      }
-      .container {
+        color: #007a3e; /* 변경된 부분: "삭제", "신청" 버튼의 글자 색상 */
+    }
+    .container {
         background-color: white;
         padding: 20px;
         border-radius: 5px;
-      }
-      .del-link, .add-link {
+    }
+    .del-link, .add-link {
         font-size: 14px;
-        color: white;
-        background-color: #3617CE;
+        color: white; /* 변경된 부분: "삭제", "신청" 버튼의 글자 색상 */
+        background-color: #007a3e; /* 변경된 부분: "삭제", "신청" 버튼의 배경 색상 */
         padding: 5px 10px;
         border-radius: 5px;
         text-decoration: none;
         margin-right: 10px;
         align-items: center;
-      }
-      .del-link:hover, .add-link:hover {
+    }
+    .del-link:hover, .add-link:hover {
         background-color: #FF404E;
         color: white;
-      }
-    </style>
-  </head>
-  <body>
-  <h1>OTT 신청 페이지</h1>
-  <a href="/ott/new">OTT 개설은 이쪽으로</a><br>
-  <br>
-  <a href="/">홈 화면</a><br>
-  <hr>
-  <div class="container">
-    <table width="100%" border="1">
-      <thead>
-      <tr>
-        <th>OTT명</th>
-        <th>소유주</th>
-        <th>최대인원</th>
-        <th>현재인원</th>
-        <th>희망공유기간 (개월)</th>
-        <th>총금액</th>
-        <th>삭제</th>
-        <th>신청</th>
-      </tr>
-      </thead>
-      <tbody>
-      <!--+${ottinfo.ottIdKey}-->
-      <tr th:each="ottinfo : ${ottinfos}">
-        <td th:text="${ottinfo.ottVar}"></td>
-        <td th:text="${ottinfo.owner}"></td>
-        <td th:text="${ottinfo.maxNum}"></td>
-        <td th:text="${ottinfo.nowNum}"></td>
-        <td th:text="${ottinfo.duration} + 개월"></td>
-        <td th:text="${ottinfo.totalCost}"></td>
-        <td style="text-align: center;"><a href="/" th:data-ott-id-key="${ottinfo.ottIdKey}" class="del-link">삭제</a></td>
-        <td style="text-align: center;"><a href="/" th:data-add-id-key="${ottinfo.ottIdKey}" class="add-link">신청</a></td>
-        <!--<td><a href="/" th:href="@{'/ott/ottinfo/'+${#strings.toString(ottinfo.ottIdKey)}}">삭제</a></td>-->
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
+    }
+  </style>
+</head>
+<body>
+<h1>OTT 신청 페이지</h1>
+<a href="/ott/new">OTT 개설은 이쪽으로</a><br>
+<br>
+<a href="/">홈 화면</a><br>
+<hr>
+<div class="container">
+  <img class="ci-image" src="https://www.idbins.com/pcweb/bizxpress/cmy/__media/img_ci_10.png" alt="DB그룹 CI 이미지">
+  <table width="100%" border="1">
+    <thead>
+    <tr>
+      <th>OTT명</th>
+      <th>소유주</th>
+      <th>최대인원</th>
+      <th>현재인원</th>
+      <th>희망공유기간 (개월)</th>
+      <th>총금액</th>
+      <th>삭제</th>
+      <th>신청</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--+${ottinfo.ottIdKey}-->
+    <tr th:each="ottinfo : ${ottinfos}">
+      <td th:text="${ottinfo.ottVar}"></td>
+      <td th:text="${ottinfo.owner}"></td>
+      <td th:text="${ottinfo.maxNum}"></td>
+      <td th:text="${ottinfo.nowNum}"></td>
+      <td th:text="${ottinfo.duration} + 개월"></td>
+      <td th:text="${ottinfo.totalCost}"></td>
+      <td style="text-align: center;"><a href="/" th:data-ott-id-key="${ottinfo.ottIdKey}" class="del-link">삭제</a></td>
+      <td style="text-align: center;"><a href="/" th:data-add-id-key="${ottinfo.ottIdKey}" class="add-link">신청</a></td>
+      <!--<td><a href="/" th:href="@{'/ott/ottinfo/'+${#strings.toString(ottinfo.ottIdKey)}}">삭제</a></td>-->
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
       $('.del-link').click(function(event) {
-        event.preventDefault();
-        console.log(event);
-        var ottIdKey = $(this).data('ott-id-key');
-        var form = $('<form action="/ott/ottinfo/' + ottIdKey + '" method="get"></form>');
-        $('body').append(form);
-        form.submit();
+          event.preventDefault();
+          console.log(event);
+          var ottIdKey = $(this).data('ott-id-key');
+          var form = $('<form action="/ott/ottinfo/' + ottIdKey + '" method="get"></form>');
+          $('body').append(form);
+          form.submit();
       });
-    });
-    $(document).ready(function() {
+  });
+  $(document).ready(function() {
       $('.add-link').click(function(event) {
-        event.preventDefault();
-        console.log(event);
-        var ottIdKey = $(this).data('add-id-key');
-        var form = $('<form action="/ott/ottinfo/add/' + ottIdKey + '" method="get"></form>');
-        $('body').append(form);
-        form.submit();
+          event.preventDefault();
+          console.log(event);
+          var ottIdKey = $(this).data('add-id-key');
+          var form = $('<form action="/ott/ottinfo/add/' + ottIdKey + '" method="get"></form>');
+          $('body').append(form);
+          form.submit();
       });
-    });
-  </script>
-  </body>
+  });
+</script>
+</body>
 </html>

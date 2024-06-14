@@ -1,63 +1,65 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <title>Title</title>
-  <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
-  <style>
-      body {
-        background-color: #3617CE;
-        color: white;
-      }
-      .container {
-          margin: 0 auto;
-          max-width: 800px;
-          padding: 20px;
-          background-color: white;
-          border-radius: 10px;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-      }
-      h1 {
-          font-size: 32px;
-          font-weight: bold;
-          color: #3617CE;
-          margin-bottom: 10px;
-      }
-      p {
-          color: #FF404E;
-          font-weight: bold
-          font-size: 20px;
-          margin-bottom: 25px;
-      }
-      p {
-          font-size: 18px;
-          margin-bottom: 20px;
-      }
-      a {
-          color: white;
-          background-color: #3617CE;
-          padding: 10px 20px;
-          border-radius: 5px;
-          text-decoration: none;
-          margin-right: 10px;
-      }
-      a:hover {
-          background-color: #FF404E;
-      }
-  </style>
-  <body>
-  <div class="container">
-    <div>
-      <h1>OTT 모집 서비스</h1>
-      <p>회원 기능</p>
-      <p>
-        <!--<a href="/members/new">회원 가입</a>-->
-        <!--<a href="/members">회원 목록</a>-->
-        <a href="/ott/new">OTT 모집 개설</a>
-        <a href="/ott/ottinfo">OTT 모집 지원</a>
-        <a href="/members/myinfo"> 내 OTT 신청정보</a>
-        <a href="/logout">로그아웃</a>
-        <a href="/members/quitcheck">회원탈퇴</a>
-      </p>
-    </div>
+<title>Title</title>
+<link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+<style>
+  body {
+    background-color: #007a3e;
+    color: white;
+  }
+  .container {
+      margin: 0 auto;
+      max-width: 930px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  }
+  h1 {
+      font-size: 32px;
+      font-weight: bold;
+      color: #007a3e;
+      margin-bottom: 10px;
+  }
+  p {
+      color: #FF404E;
+      font-weight: bold
+      font-size: 20px;
+      margin-bottom: 25px;
+  }
+  p {
+      font-size: 18px;
+      margin-bottom: 20px;
+  }
+  a {
+      color: white;
+      background-color: #007a3e;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-right: 10px;
+  }
+  a:hover {
+      background-color: #FF404E;
+  }
+</style>
+<body>
+<div class="container">
+  <img class="ci-image" src="https://www.idbins.com/pcweb/bizxpress/cmy/__media/img_ci_10.png" alt="DB그룹 CI 이미지">
+  <div>
+    <h1>생명인프라팀 OTT 모집 서비스</h1>
+    <p>회원 기능</p>
+    <p>
+      <!--<a href="/members/new">회원 가입</a>-->
+      <!--<a href="/members">회원 목록</a>-->
+      <a href="/ott/new">OTT 모집 개설</a>
+      <a href="/ott/ottinfo">OTT 모집 지원</a>
+      <a href="/members/myinfo"> 내 OTT 신청정보</a>
+      <a href="/logout">로그아웃</a>
+      <a href="/members/quitcheck">회원탈퇴</a>
+      <a href="/introduction"> 만든이</a>
+    </p>
   </div>
-  </body>
+</div>
+</body>
 </html>

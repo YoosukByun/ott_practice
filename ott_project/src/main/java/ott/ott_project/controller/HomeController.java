@@ -31,4 +31,9 @@ public class HomeController {
     public String home() {
         return "home";
     }
+
+    @GetMapping("/introduction")
+    public String createForm() {
+        return "/introduction";
+    }
 }

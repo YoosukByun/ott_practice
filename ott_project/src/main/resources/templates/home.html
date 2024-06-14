@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
   <title>Title</title>
   <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
   <style>
     body {
-      background-color: #3617CE;
-      color: white;
+      background-color: #007a3e; /* 주어진 초록색 배경 */
+      color: white; /* 흰색 텍스트 */
     }
     .container {
       margin: 0 auto;
@@ -18,7 +19,7 @@
     h1 {
       font-size: 32px;
       font-weight: bold;
-      color: #3617CE;
+      color: #007a3e; /* 주어진 초록색 헤더 색상 */
       margin-bottom: 10px;
     }
     p {
@@ -33,7 +34,7 @@
     }
     a {
       color: white;
-      background-color: #3617CE;
+      background-color: #007a3e; /* 주어진 초록색 버튼 색상 */
       padding: 10px 20px;
       border-radius: 5px;
       text-decoration: none;
@@ -43,18 +44,20 @@
       background-color: #FF404E;
     }
   </style>
-  <body>
-  <div class="container">
-    <div>
-      <h1>OTT 모집 서비스</h1>
-      <p>회원 기능</p>
-      <p>
-        <a href="/members/new">회원 가입</a>
-        <!--<a href="/members">회원 목록</a>-->
-        <!--<a href="/ott/new">OTT 모집 신청</a>-->
-        <a href="/login">로그인</a>
-      </p>
-    </div>
+</head>
+<body>
+<div class="container">
+  <img class="ci-image" src="https://www.idbins.com/pcweb/bizxpress/cmy/__media/img_ci_10.png" alt="DB그룹 CI 이미지">
+  <div>
+    <h1>생명인프라팀 OTT 모집 서비스</h1>
+    <p>회원 기능</p>
+    <p>
+      <a href="/members/new">회원 가입</a>
+      <!--<a href="/members">회원 목록</a>-->
+      <!--<a href="/ott/new">OTT 모집 신청</a>-->
+      <a href="/login">로그인</a>
+    </p>
   </div>
-  </body>
+</div>
+</body>
 </html>

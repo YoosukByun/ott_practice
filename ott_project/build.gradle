@@ -29,7 +29,7 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.22'
 
 	testImplementation("org.junit.vintage:junit-vintage-engine") {
-				exclude group: "org.hamcrest", module: "hamcrest-core"
+		exclude group: "org.hamcrest", module: "hamcrest-core"
 	}
 	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
