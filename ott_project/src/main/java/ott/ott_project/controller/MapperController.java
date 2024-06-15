@@ -42,7 +42,7 @@ public class MapperController {
         Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
         Integer ottIdKeyTmp = Integer.parseInt(ottIdKey);
         if(mapperService.OttCancel(loginMember.getMemIdKey(), ottIdKeyTmp)!=-1) {
-            return "redirect:/ott/ottinfo";
+            return "redirect:ott/ottinfo";
         }
         else {
             return "error";
@@ -58,7 +58,7 @@ public class MapperController {
         Member loginMember = (Member) session.getAttribute(LoginController.SessionConst.LOGIN_MEMBER);
         Integer ottIdKeyTmp = Integer.parseInt(ottIdKey);
         if(mapperService.OttApply(loginMember.getMemIdKey(),ottIdKeyTmp)!=-1) {
-            return "redirect:/ott/ottinfo";
+            return "redirect:ott/ottinfo";
         }
         else {
             return "error";

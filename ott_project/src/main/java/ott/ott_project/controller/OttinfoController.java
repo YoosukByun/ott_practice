@@ -39,7 +39,7 @@ public class OttinfoController {
         String tmp = ottinfoService.createOttShare(ott_var, owner, maxNum, nowNum, duration, totalCost);
         if (tmp == null)
         {
-            return "redirect:/ott/new";
+            return "redirect:ott/new";
         }
         return "redirect:/";
     }

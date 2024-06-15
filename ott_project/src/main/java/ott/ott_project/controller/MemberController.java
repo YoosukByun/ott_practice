@@ -41,7 +41,7 @@ public class MemberController {
 
     @GetMapping("/members/new")
     public String createForm() {
-        return "members/CreateMemberForm";
+        return "members/createMemberForm";
     }
 
     @PostMapping("/members/new") //회원가입
@@ -78,7 +78,7 @@ public class MemberController {
             members.add(memberTmp);
         }
         model.addAttribute("members", members);
-        return "members/myinfo";
+        return "members/Myinfo";
     }
 
     @GetMapping("/members/quit") //화면 없고 API만 존재 -> 탈퇴 후, 바로 로그인 페이지로 이동

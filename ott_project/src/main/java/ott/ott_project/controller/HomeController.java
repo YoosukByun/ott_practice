@@ -34,6 +34,6 @@ public class HomeController {
 
     @GetMapping("/introduction")
     public String createForm() {
-        return "/introduction";
+        return "introduction";
     }
 }
